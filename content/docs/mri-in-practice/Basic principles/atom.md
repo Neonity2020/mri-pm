@@ -1,5 +1,5 @@
 ---
-title: Basic principles
+title: Atomic structure and Motion in the atom
 ---
 
 ## Atomic structure

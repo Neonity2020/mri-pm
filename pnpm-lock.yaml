@@ -8,6 +8,12 @@ importers:
 
   .:
     dependencies:
+      '@orama/orama':
+        specifier: ^3.1.7
+        version: 3.1.7
+      '@orama/tokenizers':
+        specifier: ^3.1.7
+        version: 3.1.7
       fumadocs-core:
         specifier: 15.5.1
         version: 15.5.1(@types/react@19.1.6)(next@15.3.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -26,6 +32,9 @@ importers:
       react-dom:
         specifier: ^19.1.0
         version: 19.1.0(react@19.1.0)
+      tailwind-merge:
+        specifier: ^3.3.0
+        version: 3.3.0
     devDependencies:
       '@tailwindcss/postcss':
         specifier: ^4.1.8
@@ -427,6 +436,10 @@ packages:
 
   '@orama/orama@3.1.7':
     resolution: {integrity: sha512-6yB0117ZjsgNevZw3LP+bkrZa9mU/POPVaXgzMPOBbBc35w2P3R+1vMMhEfC06kYCpd5bf0jodBaTkYQW5TVeQ==}
+    engines: {node: '>= 20.0.0'}
+
+  '@orama/tokenizers@3.1.7':
+    resolution: {integrity: sha512-JtUI20XX1/wnXlsnAyb+ddw7yVNRYcZ/J9ft0RLzbZoIYz+UqWp7N1Xxwb5n5i3K2i3g2mVIpQaKBiSqjmx8LQ==}
     engines: {node: '>= 20.0.0'}
 
   '@radix-ui/number@1.1.1':
@@ -2105,6 +2118,10 @@ snapshots:
     optional: true
 
   '@orama/orama@3.1.7': {}
+
+  '@orama/tokenizers@3.1.7':
+    dependencies:
+      '@orama/orama': 3.1.7
 
   '@radix-ui/number@1.1.1': {}
 

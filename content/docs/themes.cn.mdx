@@ -1,0 +1,140 @@
+---
+title: 主题
+description: Fumadocs UI 的主题
+---
+# Fumadocs Framework: 主题
+
+URL: /docs/ui/theme
+Source: https://raw.githubusercontent.com/fuma-nama/fumadocs/refs/heads/main/apps/docs/content/docs/ui/theme.mdx
+
+为 Fumadocs UI 添加主题
+        
+## 使用方法
+
+仅支持 Tailwind CSS v4，预设还包括 Fumadocs UI 本身的源代码：
+
+```css title="Tailwind CSS"
+@import 'tailwindcss';
+@import 'fumadocs-ui/css/neutral.css';
+@import 'fumadocs-ui/css/preset.css';
+```
+
+### Preflight 更改
+
+通过使用 Tailwind CSS 插件或预构建的样式表，您的默认边框、文本和背景颜色将被更改。
+
+### 亮色/暗色模式
+
+Fumadocs 通过 [`next-themes`](https://github.com/pacocoursey/next-themes) 支持亮色/暗色模式，它包含在根提供者中。
+
+查看[根提供者](/docs/ui/layouts/root-provider#theme-provider)了解更多信息。
+
+### RTL 布局
+
+支持 RTL（从右到左）布局。
+
+要启用 RTL，请在 body 和根提供者中设置 `dir` 属性为 `rtl`（Radix UI 需要）。
+
+```tsx
+import { RootProvider } from 'fumadocs-ui/provider';
+import type { ReactNode } from 'react';
+
+export default function RootLayout({ children }: { children: ReactNode }) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <body dir="rtl">
+        <RootProvider dir="rtl">{children}</RootProvider>
+      </body>
+    </html>
+  );
+}
+```
+
+### 布局宽度
+
+使用 CSS 变量自定义文档布局的最大宽度。
+
+```css
+:root {
+  --fd-layout-width: 1400px;
+}
+```
+
+## Tailwind CSS 预设
+
+Fumadocs UI 通过 Tailwind CSS 预设添加了自己的颜色、动画和实用工具。
+
+### 颜色
+
+它内置了许多主题，您可以选择您喜欢的主题。
+
+```css
+@import 'fumadocs-ui/css/<theme>.css';
+@import 'fumadocs-ui/css/preset.css';
+```
+
+<Tabs items={['neutral', 'black', 'vitepress', 'dusk', 'catppuccin', 'ocean', 'purple']}>
+  <Tab value="neutral">
+    ![Neutral](/themes/neutral.png)
+  </Tab>
+
+  <Tab value="black">
+    ![Black](/themes/black.png)
+  </Tab>
+
+  <Tab value="vitepress">
+    ![Vitepress](/themes/vitepress.png)
+  </Tab>
+
+  <Tab value="dusk">
+    ![Dusk](/themes/dusk.png)
+  </Tab>
+
+  <Tab value="Catppuccin">
+    ![Catppuccin](/themes/catppuccin.png)
+  </Tab>
+
+  <Tab value="ocean">
+    ![Ocean](/themes/ocean.png)
+  </Tab>
+
+  <Tab value="purple">
+    ![Purple](/themes/purple.png)
+  </Tab>
+</Tabs>
+
+设计系统受到 [Shadcn UI](https://ui.shadcn.com) 的启发，您也可以使用 CSS 变量自定义颜色。
+
+```css title="global.css"
+:root {
+  --color-fd-background: hsl(0, 0%, 100%);
+}
+
+.dark {
+  --color-fd-background: hsl(0, 0%, 0%);
+}
+```
+
+对于 Shadcn UI，您可以使用 `shadcn` 预设。
+它使用来自您的 Shadcn UI 主题的颜色。
+
+```css
+@import 'tailwindcss';
+@import 'fumadocs-ui/css/shadcn.css';
+@import 'fumadocs-ui/css/preset.css';
+```
+
+### 排版
+
+我们有一个从 [Tailwind CSS Typography](https://tailwindcss.com/docs/typography-plugin) 分叉出来的内置插件。
+
+该插件添加了 `prose` 类及其变体来自定义它。
+
+```tsx
+<div className="prose">
+  <h1>Good Heading</h1>
+</div>
+```
+
+> 该插件仅适用于 Fumadocs UI 的 MDX 组件，它可能与 `@tailwindcss/typography` 冲突。
+> 如果您需要使用 `@tailwindcss/typography` 而不是默认插件，[设置一个类名选项](https://github.com/tailwindlabs/tailwindcss-typography/blob/main/README.md#changing-the-default-class-name)以避免冲突。
