@@ -1,6 +1,6 @@
+import '../global.css';
 import { RootProvider } from 'fumadocs-ui/provider';
 import type { Translations } from 'fumadocs-ui/i18n';
-import './global.css';
 
 // translations
 const cn: Partial<Translations> = {
